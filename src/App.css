@@ -1,0 +1,231 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    
+    width: 100vw;
+    padding: 0;
+    height: 100vh;
+}
+
+.navbar{
+    font-family: "Poppins";
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: transparent;
+    height: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 5vh;
+}
+
+.logoutbutton{
+    background-color: #FF5F72;
+    border-radius: 5px;
+    padding: 3px 10px;
+    text-align: center;
+    height: 30px;
+}
+
+.pubser{
+    font-family: "Anonymous Pro";
+    font-size: 1.4em;
+    margin-left: 20px;
+}
+
+.sectionscontainer{
+    background-color: #2B2B2B;
+    border-radius: 25px 25px 0 0;
+    border-top: black 5px solid;
+    width: 100%;
+    height: 100%;
+}
+.sections{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 8vw;
+    padding-top: 3vh;
+    row-gap: 5vh;
+}
+
+.butt{
+    box-shadow: -2px 5px 5px 0px rgba(0,0,0,0.75);
+    width: 35vw;
+    height: 14.5vh;
+    border-radius: 10px;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Anonymous Pro";
+    color: black;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 15%;
+}
+
+.hindisectionname{
+    font-weight:300;
+}
+
+.butt:active{
+    box-shadow:none;
+}
+
+.butt i{
+    
+    font-size: 1.6em;
+}
+
+.Educationbutton{
+    background-color: #FCFDC0;
+}
+
+.Healthbutton{
+    background-color:#FF9D9D ;
+}
+
+.Transportbutton{
+    background-color:#FCDAFC ;
+}
+
+.financebutton{
+    background-color:#DAFFB5 ;
+}
+
+.governmentbutton{
+    background-color: #C0E3FD;
+}
+
+.housingbutton{
+    background-color: #FFD69A;
+}
+
+a{
+    all: unset;
+}
+
+.edubutton{
+    background-color: #FCFDC0;
+}
+
+.healthbutton{
+    background-color: #FF9D9D;
+}
+
+.transbutton{
+    background-color: #FCDAFC;
+}
+
+.finbutton{
+    background-color: #DAFFB5;
+}
+
+.govbutton{
+    background-color: #C0E3FD;
+}
+
+.housebutton{
+    background-color: #FFD69A;
+}
+
+/*Login*/
+
+.logincontainer{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    gap: 10px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #FFE4E7;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.topimage{
+    width: 100%;
+    height: 25%;
+    background-color: #FFA8A8;
+    border: black 2px solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Anonymous Pro";
+    color: black;
+}
+
+.topimage h1{
+    width: 50%;
+    text-align: center;
+    line-height: 1em;
+    font-weight: lighter;
+}
+
+
+.inputsection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.label{
+    display: block;
+    color: black;
+    font-family: "Anonymous Pro";
+}
+
+.individualfields{
+    margin-top: 2%;
+}
+.textfield{
+    all: unset;
+    width: 100%;
+    height: 35px;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 5px;
+    color: black;
+    padding: 5px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    
+}
+
+.loginbutton{
+    all: unset;
+    background-color: #FFA8A8;
+    color: black;
+    padding: 5px 15px;
+    font-family: "Anonymous Pro";
+    font-weight: bolder;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-top: 10%;
+}
+
+.loginbutton:active{
+    background-color: #d95262;
+}
+
+.signuppara{
+    color: black;
+}
+
+.signuppara a{
+    color: #2200F2;
+}
+/*----------------*/
