@@ -1,11 +1,23 @@
 import { Link } from "react-router-dom";
 
-function Finance() {
+function Finance({ supabase, setIsLogged }) {
   return (
     <div className="container">
       <div className="navbar">
         <p className="username">Mobasshir Ajaz</p>
-        <p className="logoutbutton">Logout</p>
+        <p
+          className="logoutbutton"
+          onClick={async () => {
+            let { error } = await supabase.auth.signOut();
+            if (error) {
+              console.log(error);
+            } else {
+              setIsLogged(false);
+            }
+          }}
+        >
+          Logout
+        </p>
       </div>
       <p className="pubser">Public Services:</p>
       <div className="sectionscontainer">

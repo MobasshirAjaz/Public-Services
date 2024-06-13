@@ -1,10 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import SignUp from "./SignUp";
 
-function Login() {
+async function loginuser(email, password, supabase, setIsLogged, navigate) {
+  let { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: password,
+  });
+
+  if (!error) {
+    setIsLogged(true);
+    navigate("/");
+  } else {
+    setIsLogged(false);
+  }
+}
+function Login({ supabase, setIsLogged }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   return (
     <div className="logincontainer">
       <div className="topimage">
@@ -36,12 +50,19 @@ function Login() {
           />
         </div>
       </div>
-      <button className="loginbutton">Sign In</button>
+      <button
+        className="loginbutton"
+        onClick={() =>
+          loginuser(email, password, supabase, setIsLogged, navigate)
+        }
+      >
+        Sign In
+      </button>
       <p className="signuppara">
-        Not Registered? <a href="">Sign up here.</a>
+        Not Registered? <Link to="/SignUp">Sign up here.</Link>
       </p>
       <p className="signuppara">
-        Service Provider? <a href="">Register here.</a>
+        Service Provider? <Link to="">Register here.</Link>
       </p>
     </div>
   );
