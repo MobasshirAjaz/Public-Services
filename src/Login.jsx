@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import SignUp from "./SignUp";
 
 async function loginuser(email, password, supabase, setIsLogged, navigate) {
   let { data, error } = await supabase.auth.signInWithPassword({
@@ -9,6 +8,7 @@ async function loginuser(email, password, supabase, setIsLogged, navigate) {
   });
 
   if (!error) {
+    console.log(data);
     setIsLogged(true);
     navigate("/");
   } else {
@@ -62,7 +62,7 @@ function Login({ supabase, setIsLogged }) {
         Not Registered? <Link to="/SignUp">Sign up here.</Link>
       </p>
       <p className="signuppara">
-        Service Provider? <Link to="">Register here.</Link>
+        Service Provider? <Link to="/SignUpService">Register here.</Link>
       </p>
     </div>
   );

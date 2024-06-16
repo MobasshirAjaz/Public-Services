@@ -8,6 +8,7 @@ import Transport from "./Transport";
 import Housing from "./Housing";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import SignUpService from "./SignUpService";
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
@@ -38,7 +39,27 @@ function App() {
         path="/Login"
         element={<Login supabase={supabase} setIsLogged={setIsLogged} />}
       />
-      <Route path="/SignUp" element={<SignUp supabase={supabase} />} />
+      <Route
+        path="/SignUp"
+        element={
+          <SignUp
+            supabase={supabase}
+            setIsLogged={setIsLogged}
+            navigate={navigate}
+          />
+        }
+      />
+
+      <Route
+        path="/SignUpService"
+        element={
+          <SignUpService
+            supabase={supabase}
+            setIsLogged={setIsLogged}
+            navigate={navigate}
+          />
+        }
+      />
       <Route
         path="/"
         element={<Home supabase={supabase} setIsLogged={setIsLogged} />}
