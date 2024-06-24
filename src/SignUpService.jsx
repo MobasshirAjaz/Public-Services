@@ -16,38 +16,39 @@ async function signUpservice(
   longitude,
   about
 ) {
-  let { userdata, error } = await supabase.auth.signUp({
+  const response = await supabase.auth.signUp({
     email: email,
     password: password,
   });
+
+  const { data, error } = await supabase
+    .from("ServiceProvider")
+    .insert([
+      {
+        user_id: response.data.user.id,
+        created_at: response.data.user.created_at,
+        ServiceName: servicename,
+        Phone: phone,
+        Category: category,
+        Subcategory: subcategory,
+        City: city,
+        State: state,
+        Latitude: latitude,
+        Longitude: longitude,
+        About: about,
+      },
+    ])
+    .select();
+
+  setIsLogged(true);
+  navigate("/");
   if (error) {
-    console.log(error);
+    console.log("data insert error->", error);
   } else {
-    console.log(userdata);
-
-    const { data, error } = await supabase
-      .from("ServiceProvider")
-      .insert([
-        {
-          id: userdata.user.id,
-          created_at: userdata.user.created_at,
-          serviceName: servicename,
-          Phone: phone,
-          Category: category,
-          Subcategory: subcategory,
-          City: city,
-          State: state,
-          Latitude: latitude,
-          Longitude: longitude,
-          About: about,
-        },
-      ])
-      .select();
-
-    setIsLogged(true);
-    navigate("/");
+    console.log("data insert message->", data);
   }
 }
+
 function SignUpService({ supabase, setIsLogged, navigate }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
