@@ -1,12 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { Link } from "react-router-dom";
+async function getUsername(supabase) {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
+  let { data: User, error } = await supabase
+    .from("User")
+    .select("Name")
+    .eq("user_id", user.id);
+
+  if (error) {
+    return "User";
+  }
+
+  return User[0].Name;
+}
 function Home({ supabase, setIsLogged }) {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    getUsername(supabase).then(setUsername).catch(console.error);
+  }, [supabase]);
+
   return (
     <div className="container">
       <div className="navbar">
-        <p className="username">Mobasshir Ajaz</p>
+        <p className="username">{username}</p>
         <p
           className="logoutbutton"
           onClick={async () => {

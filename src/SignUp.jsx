@@ -12,34 +12,37 @@ async function signUpUser(
   city,
   state
 ) {
-  let { userdata, error } = await supabase.auth.signUp({
+  const response = await supabase.auth.signUp({
     email: email,
     password: password,
   });
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("user ->", userdata);
-    const { data, error } = await supabase
-      .from("User")
-      .insert([
-        {
-          id: userdata.user.id,
-          created_at: userdata.user.created_at,
-          email: email,
-          Name: name,
-          Gender: gender,
-          Phone: phone,
-          City: city,
-          State: state,
-        },
-      ])
-      .select();
+  console.log("reponse->", response);
 
-    setIsLogged(true);
-    navigate("/");
+  const { data, error } = await supabase
+    .from("User")
+    .insert([
+      {
+        user_id: response.data.user.id,
+        created_at: response.data.user.created_at,
+
+        Name: name,
+        Gender: gender,
+        Phone: phone,
+        City: city,
+        State: state,
+      },
+    ])
+    .select();
+
+  setIsLogged(true);
+  navigate("/");
+  if (error) {
+    console.log("data insert error->", error);
+  } else {
+    console.log("data insert error->", data);
   }
 }
+
 function SignUp({ supabase, setIsLogged, navigate }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
