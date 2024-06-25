@@ -9,6 +9,7 @@ import Housing from "./Housing";
 import Login from "./Login";
 import SignUp from "./SignUp";
 import SignUpService from "./SignUpService";
+import ServiceDetails from "./ServiceDetails";
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
@@ -104,14 +105,35 @@ function App() {
         <Route path="trains" element={<h1>Trains</h1>} />
         <Route path="service" element={<h1>Service</h1>} />
       </Route>
-      <Route
-        path="/housing"
-        element={<Housing supabase={supabase} setIsLogged={setIsLogged} />}
-      >
-        <Route path="water"></Route>
-        <Route path="electrician"></Route>
-        <Route path="plumber"></Route>
-        <Route path="maid"></Route>
+      <Route path="/housing">
+        <Route
+          path=""
+          element={<Housing supabase={supabase} setIsLogged={setIsLogged} />}
+        />
+        <Route
+          path="water"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="water" />
+          }
+        ></Route>
+        <Route
+          path="electrician"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="electrician" />
+          }
+        ></Route>
+        <Route
+          path="plumber"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="plumber" />
+          }
+        ></Route>
+        <Route
+          path="maid"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="maid" />
+          }
+        ></Route>
       </Route>
     </Routes>
   );
