@@ -4,7 +4,7 @@ function Housing({ supabase, setIsLogged }) {
   return (
     <div className="container">
       <div className="navbar">
-        <p className="username">Mobasshir Ajaz</p>
+        <p className="username">testing</p>
         <p
           className="logoutbutton"
           onClick={async () => {
@@ -22,7 +22,7 @@ function Housing({ supabase, setIsLogged }) {
       <p className="pubser">Public Services:</p>
       <div className="sectionscontainer">
         <div className="sections">
-          <Link to="/housing/houseschemes">
+          <Link to="/housing/">
             <div className="housebutton butt">
               <i className="fa-solid fa-newspaper"></i>
               <div className="buttonname">
