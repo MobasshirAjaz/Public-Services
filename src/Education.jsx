@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-function Education({ supabase, setIsLogged }) {
+function Education({ username, supabase, setIsLogged }) {
   return (
     <div className="container">
       <div className="navbar">
-        <p className="username">Mobasshir Ajaz</p>
+        <p className="username">{username}</p>
         <p
           className="logoutbutton"
           onClick={async () => {

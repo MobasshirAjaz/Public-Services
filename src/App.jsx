@@ -10,8 +10,9 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import SignUpService from "./SignUpService";
 import ServiceDetails from "./ServiceDetails";
+import ServiceProvider from "./ServiceProvider";
 import "./App.css";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 
 import dotenv from "react-dotenv";
 //dotenv.config();
@@ -27,6 +28,8 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
+  const [username, setUsername] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -63,52 +66,151 @@ function App() {
       />
       <Route
         path="/"
-        element={<Home supabase={supabase} setIsLogged={setIsLogged} />}
+        element={
+          <Home
+            username={username}
+            setUsername={setUsername}
+            supabase={supabase}
+            setIsLogged={setIsLogged}
+          />
+        }
       />
-      <Route
-        path="/education"
-        element={<Education supabase={supabase} setIsLogged={setIsLogged} />}
-      >
+      <Route path="/education">
+        <Route
+          path=""
+          element={
+            <Education
+              username={username}
+              supabase={supabase}
+              setIsLogged={setIsLogged}
+            />
+          }
+        />
         <Route path="eduschemes" element={<h1>Schemes</h1>} />
-        <Route path="schools" element={<h1>Schools</h1>} />
-        <Route path="universities" element={<h1>Universities</h1>} />
+        <Route
+          path="schools"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="schools" />
+          }
+        />
+        <Route
+          path="universities"
+          element={
+            <ServiceDetails
+              supabase={supabase}
+              servicecategory="universities"
+            />
+          }
+        />
       </Route>
-      <Route
-        path="/health"
-        element={<Health supabase={supabase} setIsLogged={setIsLogged} />}
-      >
+      <Route path="/health">
+        <Route
+          path=""
+          element={
+            <Health
+              username={username}
+              supabase={supabase}
+              setIsLogged={setIsLogged}
+            />
+          }
+        />
         <Route path="healthschemes" element={<h1>Schemes</h1>} />
-        <Route path="hospitals" element={<h1>Hospitals</h1>} />
-        <Route path="Pharmacy" element={<h1>Pharmacy</h1>} />
-        <Route path="labs" element={<h1>Labs</h1>} />
+        <Route
+          path="hospitals"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="hospitals" />
+          }
+        />
+        <Route
+          path="Pharmacy"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="pharmacy" />
+          }
+        />
+        <Route
+          path="labs"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="labs" />
+          }
+        />
       </Route>
-      <Route
-        path="/government"
-        element={<Government supabase={supabase} setIsLogged={setIsLogged} />}
-      >
+      <Route path="/government">
+        <Route
+          path=""
+          element={
+            <Government
+              username={username}
+              supabase={supabase}
+              setIsLogged={setIsLogged}
+            />
+          }
+        />
         <Route path="schemes" element={<h1>Schemes</h1>} />
         <Route path="aadhaar" element={<h1>Aadhaar Card</h1>} />
         <Route path="pension" element={<h1>Pension</h1>} />
       </Route>
-      <Route
-        path="/finance"
-        element={<Finance supabase={supabase} setIsLogged={setIsLogged} />}
-      >
-        <Route path="banks" element={<h1>Banks</h1>} />
-        <Route path="loans" element={<h1>Loans</h1>} />
+      <Route path="/finance">
+        <Route
+          path=""
+          element={
+            <Finance
+              username={username}
+              supabase={supabase}
+              setIsLogged={setIsLogged}
+            />
+          }
+        />
+        <Route
+          path="banks"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="banks" />
+          }
+        />
+        <Route
+          path="loans"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="loans" />
+          }
+        />
       </Route>
-      <Route
-        path="/transport"
-        element={<Transport supabase={supabase} setIsLogged={setIsLogged} />}
-      >
-        <Route path="buses" element={<h1>Buses</h1>} />
-        <Route path="trains" element={<h1>Trains</h1>} />
-        <Route path="service" element={<h1>Service</h1>} />
+      <Route path="/transport">
+        <Route
+          path=""
+          element={
+            <Transport
+              username={username}
+              supabase={supabase}
+              setIsLogged={setIsLogged}
+            />
+          }
+        />
+        <Route
+          path="buses"
+          element={<ServiceDetails supabase={supabase} servicecategory="bus" />}
+        />
+        <Route
+          path="trains"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="train" />
+          }
+        />
+        <Route
+          path="service"
+          element={
+            <ServiceDetails supabase={supabase} servicecategory="service" />
+          }
+        />
       </Route>
       <Route path="/housing">
         <Route
           path=""
-          element={<Housing supabase={supabase} setIsLogged={setIsLogged} />}
+          element={
+            <Housing
+              username={username}
+              supabase={supabase}
+              setIsLogged={setIsLogged}
+            />
+          }
         />
         <Route
           path="water"
@@ -135,6 +237,8 @@ function App() {
           }
         ></Route>
       </Route>
+
+      <Route path="/service/:providerid" element={<ServiceProvider />}></Route>
     </Routes>
   );
 }
