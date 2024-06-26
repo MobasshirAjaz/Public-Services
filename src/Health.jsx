@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-function Health({ supabase, setIsLogged }) {
+function Health({ username, supabase, setIsLogged }) {
   return (
     <div className="container">
       <div className="navbar">
-        <p className="username">Mobasshir Ajaz</p>
+        <p className="username">{username}</p>
         <p
           className="logoutbutton"
           onClick={async () => {

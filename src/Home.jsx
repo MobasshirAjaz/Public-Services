@@ -17,9 +17,7 @@ async function getUsername(supabase) {
 
   return User[0].Name;
 }
-function Home({ supabase, setIsLogged }) {
-  const [username, setUsername] = useState("");
-
+function Home({ username, setUsername, supabase, setIsLogged }) {
   useEffect(() => {
     getUsername(supabase).then(setUsername).catch(console.error);
   }, [supabase]);

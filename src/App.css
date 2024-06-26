@@ -234,3 +234,51 @@ a{
 .textarea{
     height: 100%;
 }
+
+.servicelistitem{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    background-color: #d2fdc0;
+    border-radius: 10px;
+    border: black solid 2px;
+}
+.servicelistitem p{
+    color: black;
+}
+.servicedetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.servicename{
+    font-family: "Anonymous Pro";
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.servicecity{
+    font-family: "Anonymous Pro";
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.servicestate{
+    font-family: "Anonymous Pro";
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.listcontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    overflow-y: hidden;
+}
+
