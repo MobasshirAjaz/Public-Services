@@ -335,3 +335,26 @@ a{
 .nolocation{
     display: none;
 }
+
+.appointment{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    background-color: #BFAAAA;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.inputappointment{
+    font-family: "Anonymous Pro";
+    font-size: 1em;
+    display: flex;
+    gap: 5px;
+    margin-left: 5px;
+    color: black;
+}
+
+.inputappointment input{
+    width: 20px;
+}

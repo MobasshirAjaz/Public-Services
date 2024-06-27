@@ -12,6 +12,15 @@ async function getDetails(supabase, providerid) {
 
   return ServiceProvider;
 }
+
+async function getuserdetails(supabase) {
+  let { data: User, error } = await supabase.from("User").select("*");
+
+  if (error) {
+    throw error;
+  }
+  return User;
+}
 function ServiceProvider({ supabase }) {
   let { providerid } = useParams();
 
@@ -19,6 +28,9 @@ function ServiceProvider({ supabase }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [islocation, setIsLocation] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [sendtext, setSendText] = useState("Request Appointment");
+  const [userdetails, setUserDetails] = useState([]);
 
   useEffect(() => {
     getDetails(supabase, providerid)
@@ -33,6 +45,37 @@ function ServiceProvider({ supabase }) {
       });
   }, [supabase, providerid]);
 
+  useEffect(() => {
+    getuserdetails(supabase)
+      .then((data) => {
+        setUserDetails(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error.message);
+        setError(error);
+        setLoading(false);
+      });
+  }, [supabase]);
+
+  useEffect(() => {
+    if (
+      userdetails &&
+      userdetails.length > 0 &&
+      serviceProvider &&
+      serviceProvider.length > 0
+    ) {
+      if (isChecked) {
+        setSendText(
+          `Name: ${userdetails[0].Name}  Email: ${userdetails[0].email}  Phone: ${userdetails[0].Phone}  Gender: ${userdetails[0].Gender} City: ${userdetails[0].City} State: ${userdetails[0].State} Request Appointment for ${serviceProvider[0].ServiceName}`
+        );
+      } else {
+        setSendText(
+          `Name: ${userdetails[0].Name} Email: ${userdetails[0].email}  Gender: ${userdetails[0].Gender} City: ${userdetails[0].City} State: ${userdetails[0].State} Request Appointment for ${serviceProvider[0].ServiceName}`
+        );
+      }
+    }
+  }, [isChecked]);
   useEffect(() => {
     if (serviceProvider[0]?.Latitude && serviceProvider[0].Longitude) {
       setIsLocation(true);
@@ -69,7 +112,27 @@ function ServiceProvider({ supabase }) {
             Call
           </a>
         </button>
-        <button className="btn email-btn">Set Appointment</button>
+        <div className="appointment">
+          <div className="inputappointment">
+            <input
+              type="checkbox"
+              name="checkphone"
+              id="checkphone"
+              onChange={(event) => {
+                setIsChecked(event.target.checked);
+              }}
+            />
+            <label htmlFor="checkphone">Include Phone number in request</label>
+          </div>
+          <button className="btn email-btn">
+            <a
+              href={`mailto:${serviceProvider[0].email}?subject=Appointment Request&body=${sendtext}`}
+              target="_blank"
+            >
+              Request Appointment
+            </a>
+          </button>
+        </div>
       </div>
     </div>
   );
