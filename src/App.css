@@ -282,3 +282,56 @@ a{
     overflow-y: hidden;
 }
 
+.infocontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    height: 100vh;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.servname{
+    font-family: "Anonymous Pro";
+    font-size: 1.5em;
+    font-weight: 600;
+    text-align: center;
+}
+.btn{
+    all: unset;
+    background-color: #FFA8A8;
+    color: black;
+    padding: 5px 15px;
+    font-family: "Anonymous Pro";
+    font-weight: bolder;
+    border: 2px black solid;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:active{
+    background-color: #d95262;
+}
+
+.about{
+    flex-grow: 1;
+    background-color: #89AA92;
+    border-radius: 5px;
+    color: black;
+    padding: 10px;
+    font-size: 1.2em;
+    font-family: "Anonymous Pro";
+    text-wrap: wrap;
+    overflow-y: hidden;
+}
+
+.nolocation{
+    display: none;
+}

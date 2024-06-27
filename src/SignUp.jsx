@@ -24,7 +24,7 @@ async function signUpUser(
       {
         user_id: response.data.user.id,
         created_at: response.data.user.created_at,
-
+        email: email,
         Name: name,
         Gender: gender,
         Phone: phone,

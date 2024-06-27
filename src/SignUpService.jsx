@@ -27,6 +27,7 @@ async function signUpservice(
       {
         user_id: response.data.user.id,
         created_at: response.data.user.created_at,
+        email: email,
         ServiceName: servicename,
         Phone: phone,
         Category: category,
