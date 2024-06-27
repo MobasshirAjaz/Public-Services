@@ -238,7 +238,10 @@ function App() {
         ></Route>
       </Route>
 
-      <Route path="/service/:providerid" element={<ServiceProvider />}></Route>
+      <Route
+        path="/service/:providerid"
+        element={<ServiceProvider supabase={supabase} />}
+      ></Route>
     </Routes>
   );
 }
