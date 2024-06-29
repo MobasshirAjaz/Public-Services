@@ -12,6 +12,7 @@ import SignUpService from "./SignUpService";
 import ServiceDetails from "./ServiceDetails";
 import ServiceProvider from "./ServiceProvider";
 import Schemes from "./Schemes";
+import ServicePage from "./ServicePage";
 import "./App.css";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 
@@ -264,6 +265,16 @@ function App() {
         path="/service/:providerid"
         element={<ServiceProvider supabase={supabase} />}
       ></Route>
+
+      <Route
+        path="/servicepage/:providerid"
+        element={
+          <ServicePage
+            supabase={supabase}
+            setIsLogged={setIsLogged}
+          ></ServicePage>
+        }
+      />
     </Routes>
   );
 }

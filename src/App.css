@@ -147,12 +147,14 @@ a{
     
     align-items: center;
     gap: 10px;
+    
     height: 100vh;
     width: 100vw;
     background-color: #FFE4E7;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
+    padding-bottom: 20px;
 }
 
 .topimage{
@@ -357,4 +359,20 @@ a{
 
 .inputappointment input{
     width: 20px;
+}
+
+.servcontainer{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 100vh;
+    width: 100vw;
+    background-color: #FFE4E7;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
 }
