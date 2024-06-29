@@ -22,7 +22,7 @@ function Health({ username, supabase, setIsLogged }) {
       <p className="pubser">Public Services:</p>
       <div className="sectionscontainer">
         <div className="sections">
-          <Link to="/health/healthschemes">
+          <Link to="/health/schemes">
             <div className="healthbutton butt">
               <i className="fa-solid fa-newspaper"></i>
               <div className="buttonname">

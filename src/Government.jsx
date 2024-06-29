@@ -31,7 +31,7 @@ function Government({ username, supabase, setIsLogged }) {
               </div>
             </div>
           </Link>
-          <Link to="/government/aadhaar">
+          <a href="https://uidai.gov.in/" target="_blank">
             <div className="govbutton butt">
               <i className="fa-solid fa-address-card"></i>
               <div className="buttonname">
@@ -39,8 +39,8 @@ function Government({ username, supabase, setIsLogged }) {
                 <p className="hindisectionname">आधार कार्ड</p>
               </div>
             </div>
-          </Link>
-          <Link to="/government/pension">
+          </a>
+          <a href="https://pensionersportal.gov.in/" target="_blank">
             <div className="govbutton butt">
               <i className="fa-solid fa-receipt"></i>
               <div className="buttonname">
@@ -48,7 +48,7 @@ function Government({ username, supabase, setIsLogged }) {
                 <p className="hindisectionname">पेंशन</p>
               </div>
             </div>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

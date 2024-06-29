@@ -91,18 +91,19 @@ function ServiceProvider({ supabase }) {
 
   return (
     <div className="infocontainer">
-      <h1 className="servname">{serviceProvider[0].ServiceName}</h1>
+      <h1 className="servname">{serviceProvider[0]?.ServiceName}</h1>
       <div className="about">
-        <p>{serviceProvider[0].City}</p>
-        <p>{serviceProvider[0].State}</p>
-        <p>{serviceProvider[0].email}</p>
+        <p>{serviceProvider[0]?.City}</p>
+        <p>{serviceProvider[0]?.State}</p>
+        <p>{serviceProvider[0]?.email}</p>
         <br />
-        <p>{serviceProvider[0].About}</p>
+        <p>{serviceProvider[0]?.About}</p>
       </div>
       <div className="buttons">
         <button className={islocation ? "btn dir-btn" : "nolocation"}>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${serviceProvider[0].Latitude},${serviceProvider[0].Longitude}`}
+            target="_blank"
           >
             Open Maps
           </a>
