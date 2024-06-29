@@ -9,7 +9,19 @@ async function loginuser(email, password, supabase, setIsLogged, navigate) {
 
   if (!error) {
     setIsLogged(true);
-    navigate("/");
+    //check if the user is a service provider
+    let { data: ServiceProvider, error } = await supabase
+      .from("ServiceProvider")
+      .select("*")
+      .eq("user_id", data.user.id);
+    if (error) {
+      console.error(error);
+    }
+    if (ServiceProvider.length > 0) {
+      navigate("/servicepage/" + data.user.id);
+    } else {
+      navigate("/");
+    }
   } else {
     setIsLogged(false);
   }
