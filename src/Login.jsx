@@ -8,7 +8,6 @@ async function loginuser(email, password, supabase, setIsLogged, navigate) {
   });
 
   if (!error) {
-    console.log(data);
     setIsLogged(true);
     navigate("/");
   } else {

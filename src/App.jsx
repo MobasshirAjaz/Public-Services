@@ -11,6 +11,7 @@ import SignUp from "./SignUp";
 import SignUpService from "./SignUpService";
 import ServiceDetails from "./ServiceDetails";
 import ServiceProvider from "./ServiceProvider";
+import Schemes from "./Schemes";
 import "./App.css";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 
@@ -86,7 +87,12 @@ function App() {
             />
           }
         />
-        <Route path="eduschemes" element={<h1>Schemes</h1>} />
+        <Route
+          path="schemes"
+          element={
+            <Schemes supabase={supabase} servicecategory="education schemes" />
+          }
+        ></Route>
         <Route
           path="schools"
           element={
@@ -114,7 +120,12 @@ function App() {
             />
           }
         />
-        <Route path="healthschemes" element={<h1>Schemes</h1>} />
+        <Route
+          path="schemes"
+          element={
+            <Schemes supabase={supabase} servicecategory="health schemes" />
+          }
+        ></Route>
         <Route
           path="hospitals"
           element={
@@ -145,7 +156,12 @@ function App() {
             />
           }
         />
-        <Route path="schemes" element={<h1>Schemes</h1>} />
+        <Route
+          path="schemes"
+          element={
+            <Schemes supabase={supabase} servicecategory="government schemes" />
+          }
+        ></Route>
         <Route path="aadhaar" element={<h1>Aadhaar Card</h1>} />
         <Route path="pension" element={<h1>Pension</h1>} />
       </Route>
@@ -212,6 +228,12 @@ function App() {
             />
           }
         />
+        <Route
+          path="schemes"
+          element={
+            <Schemes supabase={supabase} servicecategory="housing schemes" />
+          }
+        ></Route>
         <Route
           path="water"
           element={

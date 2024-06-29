@@ -22,7 +22,7 @@ function Housing({ username, supabase, setIsLogged }) {
       <p className="pubser">Public Services:</p>
       <div className="sectionscontainer">
         <div className="sections">
-          <Link to="/housing/">
+          <Link to="/housing/schemes">
             <div className="housebutton butt">
               <i className="fa-solid fa-newspaper"></i>
               <div className="buttonname">
