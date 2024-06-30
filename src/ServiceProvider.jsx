@@ -100,19 +100,22 @@ function ServiceProvider({ supabase }) {
         <p>{serviceProvider[0]?.About}</p>
       </div>
       <div className="buttons">
-        <button className={islocation ? "btn dir-btn" : "nolocation"}>
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${serviceProvider[0].Latitude},${serviceProvider[0].Longitude}`}
-            target="_blank"
-          >
-            Open Maps
-          </a>
-        </button>
-        <button className="btn call-btn">
-          <a target="_blank" href={"tel:" + serviceProvider[0].Phone}>
-            Call
-          </a>
-        </button>
+        <a
+          href={`https://www.google.com/maps/search/?api=1&query=${serviceProvider[0]?.Latitude},${serviceProvider[0]?.Longitude}`}
+          target="_blank"
+          className={islocation ? "btn dir-btn" : "nolocation"}
+        >
+          Open Maps
+        </a>
+
+        <a
+          target="_blank"
+          href={"tel:" + serviceProvider[0].Phone}
+          className="btn call-btn"
+        >
+          Call
+        </a>
+
         <div className="appointment">
           <div className="inputappointment">
             <input
@@ -125,14 +128,14 @@ function ServiceProvider({ supabase }) {
             />
             <label htmlFor="checkphone">Include Phone number in request</label>
           </div>
-          <button className="btn email-btn">
-            <a
-              href={`mailto:${serviceProvider[0].email}?subject=Appointment Request&body=${sendtext}`}
-              target="_blank"
-            >
-              Request Appointment
-            </a>
-          </button>
+
+          <a
+            href={`mailto:${serviceProvider[0].email}?subject=Appointment Request&body=${sendtext}`}
+            target="_blank"
+            className="btn email-btn"
+          >
+            Request Appointment
+          </a>
         </div>
       </div>
     </div>
