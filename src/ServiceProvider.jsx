@@ -77,7 +77,7 @@ function ServiceProvider({ supabase }) {
     }
   }, [isChecked]);
   useEffect(() => {
-    if (serviceProvider[0]?.Latitude && serviceProvider[0].Longitude) {
+    if (serviceProvider[0]?.Latitude && serviceProvider[0]?.Longitude) {
       setIsLocation(true);
     }
   }, [serviceProvider]);
@@ -110,7 +110,7 @@ function ServiceProvider({ supabase }) {
 
         <a
           target="_blank"
-          href={"tel:" + serviceProvider[0].Phone}
+          href={"tel:" + serviceProvider[0]?.Phone}
           className="btn call-btn"
         >
           Call
@@ -130,7 +130,7 @@ function ServiceProvider({ supabase }) {
           </div>
 
           <a
-            href={`mailto:${serviceProvider[0].email}?subject=Appointment Request&body=${sendtext}`}
+            href={`mailto:${serviceProvider[0]?.email}?subject=Appointment Request&body=${sendtext}`}
             target="_blank"
             className="btn email-btn"
           >
