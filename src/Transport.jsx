@@ -31,7 +31,7 @@ function Transport({ username, supabase, setIsLogged }) {
               </div>
             </div>
           </Link>
-          <Link to="/transport/trains">
+          <a href="https://www.irctc.co.in/nget/train-search" target="_blank">
             <div className="transbutton butt">
               <i className="fa-solid fa-train-subway"></i>
               <div className="buttonname">
@@ -39,7 +39,7 @@ function Transport({ username, supabase, setIsLogged }) {
                 <p className="hindisectionname">रेलगाड़ी</p>
               </div>
             </div>
-          </Link>
+          </a>
           <Link to="/transport/service">
             <div className="transbutton butt">
               <i className="fa-solid fa-wrench"></i>
