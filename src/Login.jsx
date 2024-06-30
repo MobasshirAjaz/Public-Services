@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 async function loginuser(email, password, supabase, setIsLogged, navigate) {
   let { data, error } = await supabase.auth.signInWithPassword({
@@ -30,10 +30,25 @@ function Login({ supabase, setIsLogged }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const [imagetext, setImageText] = useState("Public Services");
+  const [checkdesktop, setCheckDesktop] = useState(window.innerWidth > 768);
+  useEffect(() => {
+    setCheckDesktop(window.innerWidth > 768);
+  }, [window.innerWidth]);
+
+  useEffect(() => {
+    if (checkdesktop) {
+      setImageText(
+        "Webapp not optimized for desktop.Please use mobile for better experience. or press F12 and select mobile view and refresh the page."
+      );
+    }
+  }, [checkdesktop]);
+
   return (
     <div className="logincontainer">
       <div className="topimage">
-        <h1>Public Services</h1>
+        <h1>{imagetext}</h1>
       </div>
       <div className="inputsection">
         <div className="individualfields">
