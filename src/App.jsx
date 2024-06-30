@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     if (!isLogged) {
-      navigate("/Login");
+      navigate("/Login", { replace: true });
     }
   }, [isLogged]);
   return (

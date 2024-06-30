@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 async function getUsername(supabase) {
   const {
     data: { user },
@@ -18,6 +19,7 @@ async function getUsername(supabase) {
   return User[0].Name;
 }
 function Home({ username, setUsername, supabase, setIsLogged }) {
+  const navigate = useNavigate();
   useEffect(() => {
     getUsername(supabase).then(setUsername).catch(console.error);
   }, [supabase]);
@@ -34,6 +36,7 @@ function Home({ username, setUsername, supabase, setIsLogged }) {
               console.log(error);
             } else {
               setIsLogged(false);
+              navigate("/Login", { replace: true });
             }
           }}
         >
