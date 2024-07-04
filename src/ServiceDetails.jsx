@@ -43,6 +43,56 @@ function ServiceDetails({ supabase, servicecategory }) {
   const [serviceProviders, setServiceProviders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [googlequery, setGoogleQuery] = useState("");
+  const [buttontext, setButtonText] = useState("Request Appointment");
+
+  useEffect(() => {
+    switch (servicecategory) {
+      case "maid":
+        setGoogleQuery("Maid services near me");
+        break;
+      case "plumber":
+        setGoogleQuery("Plumber services near me");
+        break;
+      case "electrician":
+        setGoogleQuery("Electrician services near me");
+        break;
+      case "water":
+        setGoogleQuery("Water services near me");
+        break;
+      case "service":
+        setGoogleQuery("Vehicle Service centres near me");
+        break;
+
+      case "bus":
+        setGoogleQuery("Bus services near me");
+        setButtonText("Inquire Ticket availability");
+        break;
+      case "loans":
+        setGoogleQuery("Loan services near me");
+        break;
+      case "banks":
+        setGoogleQuery("Banks near me");
+        break;
+      case "labs":
+        setGoogleQuery("Patho Labs near me");
+        break;
+      case "pharmacy":
+        setGoogleQuery("Pharmacy near me");
+        break;
+      case "hospitals":
+        setGoogleQuery("Hospitals near me");
+        break;
+      case "universities":
+        setGoogleQuery("Universities near me");
+        break;
+      case "schools":
+        setGoogleQuery("Schools near me");
+        break;
+      default:
+        setGoogleQuery("Public Services near me");
+    }
+  }, [servicecategory]);
 
   useEffect(() => {
     getServicesList(supabase, servicecategory)
@@ -66,6 +116,14 @@ function ServiceDetails({ supabase, servicecategory }) {
       <div className="topimage">
         <h1>{servicecategory}</h1>
       </div>
+      <a
+        href={`http://www.google.com/search?q=${googlequery}`}
+        className="topimage"
+        target="_blank"
+        style={{ backgroundColor: "#b8e2ff", border: "0" }}
+      >
+        See Web Results
+      </a>
       {serviceProviders.map((provider) => (
         <Link to={`/service/${provider.user_id}`}>
           <div className="servicelistitem" key={provider.user_id}>

@@ -31,6 +31,7 @@ function ServiceProvider({ supabase }) {
   const [isChecked, setIsChecked] = useState(false);
   const [sendtext, setSendText] = useState("Request Appointment");
   const [userdetails, setUserDetails] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
     getDetails(supabase, providerid)
@@ -67,11 +68,11 @@ function ServiceProvider({ supabase }) {
     ) {
       if (isChecked) {
         setSendText(
-          `Name: ${userdetails[0].Name}  Email: ${userdetails[0].email}  Phone: ${userdetails[0].Phone}  Gender: ${userdetails[0].Gender} City: ${userdetails[0].City} State: ${userdetails[0].State} Request Appointment for ${serviceProvider[0].ServiceName}`
+          `Name: ${userdetails[0].Name}  Email: ${userdetails[0].email}  Phone: ${userdetails[0].Phone}  Gender: ${userdetails[0].Gender} City: ${userdetails[0].City} State: ${userdetails[0].State} Request Appointment for ${serviceProvider[0].ServiceName} on DATE: ${selectedDate}`
         );
       } else {
         setSendText(
-          `Name: ${userdetails[0].Name} Email: ${userdetails[0].email}  Gender: ${userdetails[0].Gender} City: ${userdetails[0].City} State: ${userdetails[0].State} Request Appointment for ${serviceProvider[0].ServiceName}`
+          `Name: ${userdetails[0].Name} Email: ${userdetails[0].email}  Gender: ${userdetails[0].Gender} City: ${userdetails[0].City} State: ${userdetails[0].State} Request Appointment for ${serviceProvider[0].ServiceName} on DATE: ${selectedDate}`
         );
       }
     }
@@ -117,6 +118,18 @@ function ServiceProvider({ supabase }) {
         </a>
 
         <div className="appointment">
+          <div className="inputappointment">
+            <input
+              type="date"
+              name="date"
+              id="date"
+              onChange={(event) => {
+                setSelectedDate(event.target.value);
+              }}
+            />
+            <label htmlFor="date">{selectedDate}</label>
+          </div>
+
           <div className="inputappointment">
             <input
               type="checkbox"
