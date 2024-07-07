@@ -42,7 +42,7 @@ async function signUpservice(
     .select();
 
   setIsLogged(true);
-  navigate("/");
+  navigate("/Login");
   if (error) {
     console.log("data insert error->", error);
   } else {

@@ -25,7 +25,6 @@ async function getServicesList(supabase, servicecategory) {
     throw error;
   }
 
-  //sort based on city and state based on user location ignore case. i.e show  the user's city first then the state then the rest
   ServiceProvider.sort((a, b) => {
     const cityA = a.City.toLowerCase();
     const cityB = b.City.toLowerCase();
@@ -34,43 +33,39 @@ async function getServicesList(supabase, servicecategory) {
     const targetCity = city.toLowerCase();
     const targetState = state.toLowerCase();
 
-    // Check if both city and state match, prioritize them
     if (
       cityA === targetCity &&
       stateA === targetState &&
       (cityB !== targetCity || stateB !== targetState)
     ) {
-      return -1; // A comes first
+      return -1;
     }
     if (
       cityB === targetCity &&
       stateB === targetState &&
       (cityA !== targetCity || stateA !== targetState)
     ) {
-      return 1; // B comes first
+      return 1;
     }
 
-    // If cities are the same but states are different, prioritize the user's state
     if (cityA === cityB) {
       if (stateA === targetState && stateB !== targetState) {
-        return -1; // A comes first
+        return -1;
       }
       if (stateB === targetState && stateA !== targetState) {
-        return 1; // B comes first
+        return 1;
       }
     }
 
-    // If both cities are not the target city, prioritize the user's state
     if (cityA !== targetCity && cityB !== targetCity) {
       if (stateA === targetState && stateB !== targetState) {
-        return -1; // A comes first
+        return -1;
       }
       if (stateB === targetState && stateA !== targetState) {
-        return 1; // B comes first
+        return 1;
       }
     }
 
-    // Maintain original order if none of the above conditions are met
     return 0;
   });
 

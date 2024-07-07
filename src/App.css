@@ -298,7 +298,7 @@ a{
     gap: 10px;
     width: 100%;
     padding: 10px;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .infocontainer{
@@ -350,7 +350,7 @@ a{
     font-size: 1.2em;
     font-family: "Anonymous Pro";
     text-wrap: wrap;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .nolocation{

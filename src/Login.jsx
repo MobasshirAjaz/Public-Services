@@ -2,12 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 async function loginuser(email, password, supabase, setIsLogged, navigate) {
-  let { data, error } = await supabase.auth.signInWithPassword({
+  let { data, errorsignup } = await supabase.auth.signInWithPassword({
     email: email,
     password: password,
   });
+  if (errorsignup) {
+    console.error(errorsignup);
+    alert("Wrong email or password");
+  }
 
-  if (!error) {
+  if (!errorsignup) {
     setIsLogged(true);
     //check if the user is a service provider
     let { data: ServiceProvider, error } = await supabase

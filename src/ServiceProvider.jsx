@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import React from "react";
 
 async function getDetails(supabase, providerid) {
   let { data: ServiceProvider, error } = await supabase
@@ -29,9 +30,9 @@ function ServiceProvider({ supabase }) {
   const [error, setError] = useState(null);
   const [islocation, setIsLocation] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [sendtext, setSendText] = useState("Request Appointment");
+  const [sendtext, setSendText] = useState("");
   const [userdetails, setUserDetails] = useState([]);
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("Date not selected");
 
   useEffect(() => {
     getDetails(supabase, providerid)
@@ -50,6 +51,11 @@ function ServiceProvider({ supabase }) {
     getuserdetails(supabase)
       .then((data) => {
         setUserDetails(data);
+        if (serviceProvider.length > 0) {
+          setSendText(
+            `Name: ${data[0].Name} Email: ${data[0].email}  Gender: ${data[0].Gender} City: ${data[0].City} State: ${data[0].State} Request Appointment for ${serviceProvider[0].ServiceName} on DATE: ${selectedDate}`
+          );
+        }
         setLoading(false);
       })
       .catch((error) => {
@@ -57,7 +63,7 @@ function ServiceProvider({ supabase }) {
         setError(error);
         setLoading(false);
       });
-  }, [supabase]);
+  }, [supabase, serviceProvider]);
 
   useEffect(() => {
     if (
@@ -98,7 +104,14 @@ function ServiceProvider({ supabase }) {
         <p>{serviceProvider[0]?.State}</p>
         <p>{serviceProvider[0]?.email}</p>
         <br />
-        <p>{serviceProvider[0]?.About}</p>
+        <p>
+          {serviceProvider[0]?.About.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              <br />
+            </React.Fragment>
+          ))}
+        </p>
       </div>
       <div className="buttons">
         <a
