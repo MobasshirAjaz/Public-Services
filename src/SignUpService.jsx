@@ -182,8 +182,8 @@ function SignUpService({ supabase, setIsLogged, navigate }) {
               {category === "transport" && (
                 <>
                   <option value="bus">Bus</option>
-                  <option value="train">Train</option>
-                  <option value="service">Service</option>
+
+                  <option value="service">Vehicle Service</option>
                 </>
               )}
               {category === "housing" && (
