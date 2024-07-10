@@ -1,8 +1,18 @@
-# React + Vite
+# Public Services
+For detailed information about the features in app, see **Public Service Report.pdf** file.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+You can access the web app through the following link : [publicservices.vercel.app]( publicservices.vercel.app )
 
-Currently, two official plugins are available:
+Various sample data has been inserted into the app for showcase purpose.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**You can use the following credentials to login for looking at the features of the app if you don't want to login with
+your real credentials:**
+
+### Sample user
+email: testuser@ps.com
+password:12345678
+
+### Sample service provider
+email:loyolajsr@ps.com
+password:12345678
+
