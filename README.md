@@ -16,3 +16,5 @@ password:12345678
 email:loyolajsr@ps.com
 password:12345678
 
+*All the sample data used is fictional. Any resemblance to real world is not intended*
+
