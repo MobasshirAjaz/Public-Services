@@ -1,7 +1,7 @@
 # Public Services
 For detailed information about the features in app, see **Public Service Report.pdf** file.
 
-You can access the web app through the following link : [publicservices.vercel.app]( publicservices.vercel.app )
+You can access the web app through the following link : [publicservices.vercel.app]( https://publicservices.vercel.app/ )
 
 Various sample data has been inserted into the app for showcase purpose.
 
