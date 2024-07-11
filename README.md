@@ -1,7 +1,7 @@
 # Public Services
 For detailed information about the features in app, see **Public Service Report.pdf** file.
 
-The webapp is primarily intended for use in a Mobile device.
+The webapp is preferably intended for use in a Mobile device but can also be accessed through desktop.
 
 You can access the web app through the following link : [publicservices.vercel.app]( https://publicservices.vercel.app/ )
 
