@@ -160,7 +160,7 @@ function ServiceDetails({ supabase, servicecategory }) {
       {serviceProviders.map((provider) => (
         <Link to={`/service/${provider.user_id}`}>
           <div className="servicelistitem" key={provider.user_id}>
-            <div className="servicedetails">
+            <div className="servicedetails" key={provider.user_id}>
               <p className="servicename">{provider.ServiceName}</p>
               <p className="service city">{provider.City}</p>
               <p className="service state">{provider.State}</p>

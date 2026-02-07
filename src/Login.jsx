@@ -2,32 +2,40 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 async function loginuser(email, password, supabase, setIsLogged, navigate) {
-  let { data, errorsignup } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
   });
-  if (errorsignup) {
-    console.error(errorsignup);
+  console.log("Something happened");
+
+  if (error) {
+    console.error("Sign in error:", error);
     alert("Wrong email or password");
+    setIsLogged(false);
+    return;
   }
 
-  if (!errorsignup) {
-    setIsLogged(true);
-    //check if the user is a service provider
-    let { data: ServiceProvider, error } = await supabase
-      .from("ServiceProvider")
-      .select("*")
-      .eq("user_id", data.user.id);
-    if (error) {
-      console.error(error);
-    }
-    if (ServiceProvider.length > 0) {
-      navigate("/servicepage/" + data.user.id);
-    } else {
-      navigate("/");
-    }
-  } else {
+  if (!data?.user) {
+    console.error("No user returned from signIn:", data);
     setIsLogged(false);
+    return;
+  }
+
+  setIsLogged(true);
+  const { data: ServiceProvider, error: spError } = await supabase
+    .from("ServiceProvider")
+    .select("*")
+    .eq("user_id", data.user.id);
+
+  if (spError) {
+    console.error(spError);
+    return;
+  }
+
+  if (ServiceProvider?.length > 0) {
+    navigate("/servicepage/" + data.user.id);
+  } else {
+    navigate("/");
   }
 }
 function Login({ supabase, setIsLogged }) {

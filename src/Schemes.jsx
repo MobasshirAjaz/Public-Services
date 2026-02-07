@@ -42,7 +42,7 @@ function Schemes({ supabase, servicecategory }) {
       {Schemes.map((scheme) => (
         <a href={scheme.Link} target="_blank">
           <div className="servicelistitem" key={scheme.id}>
-            <div className="servicedetails">
+            <div className="servicedetails" key={scheme.id}>
               <p className="servicename">{scheme.SchemeName}</p>
               <p className="service city">{scheme.category}</p>
               <p className="service state">India</p>
